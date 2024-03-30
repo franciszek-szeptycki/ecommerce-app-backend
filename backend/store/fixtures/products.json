@@ -1,0 +1,129 @@
+[
+  {
+      "model": "store.productgallery",
+      "pk": 1,
+      "fields": {
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z"
+      }
+  },
+  {
+      "model": "store.productgallery",
+      "pk": 2,
+      "fields": {
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z"
+      }
+  },
+  {
+      "model": "store.productgallery",
+      "pk": 3,
+      "fields": {
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z"
+      }
+  },
+  {
+      "model": "store.productgallery",
+      "pk": 4,
+      "fields": {
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z"
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 1,
+      "fields": {
+          "name": "RTV Product 1",
+          "price": "10.99",
+          "description": "This is a creative description for RTV Product 1.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [1]
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 2,
+      "fields": {
+          "name": "RTV Product 2",
+          "price": "20.49",
+          "description": "This is a creative description for RTV Product 2.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [2]
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 3,
+      "fields": {
+          "name": "RTV Product 3",
+          "price": "15.75",
+          "description": "This is a creative description for RTV Product 3.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [3]
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 4,
+      "fields": {
+          "name": "RTV Product 4",
+          "price": "30.00",
+          "description": "This is a creative description for RTV Product 4.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [4]
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 5,
+      "fields": {
+          "name": "RTV Product 5",
+          "price": "25.99",
+          "description": "This is a creative description for RTV Product 5.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [1]
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 6,
+      "fields": {
+          "name": "RTV Product 6",
+          "price": "18.49",
+          "description": "This is a creative description for RTV Product 6.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [2]
+      }
+  },
+  {
+      "model": "store.product",
+      "pk": 7,
+      "fields": {
+          "name": "RTV Product 7",
+          "price": "22.75",
+          "description": "This is a creative description for RTV Product 7.",
+          "image": "placeholder.jpg",
+          "created_at": "2024-03-30T00:00:00Z",
+          "updated_at": "2024-03-30T00:00:00Z",
+          "galery": [3]
+      }
+  }
+]
