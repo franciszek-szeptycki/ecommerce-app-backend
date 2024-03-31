@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, ProductGallery
+from .models import *
 
 
 class ProductGallerySerializer(serializers.ModelSerializer):
@@ -9,8 +9,14 @@ class ProductGallerySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    galery = ProductGallerySerializer(many=True, read_only=True)
+    gallery = ProductGallerySerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'description', 'image', 'created_at', 'updated_at', 'galery']
+        fields = ['id', 'name', 'price', 'description', 'image', 'created_at', 'updated_at', 'gallery']
+
+
+class WebsiteConfigSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WebsiteConfig
+        fields = '__all__'

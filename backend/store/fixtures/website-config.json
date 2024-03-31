@@ -1,0 +1,11 @@
+[
+  {
+    "model": "store.websiteconfig",
+    "pk": 1,
+    "fields": {
+      "hero_title": "Lorem ipsum",
+      "hero_subtitle": "Dolor sit amet consectetur adipiscing elit",
+      "hero_image": "hero-placeholder.jpg"
+    }
+  }
+]

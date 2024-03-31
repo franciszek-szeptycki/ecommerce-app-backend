@@ -76,8 +76,6 @@ INSTALLED_APPS += [
     'docs',
 ]
 
-STATIC_URL = 'static/'
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -96,3 +94,7 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 APPEND_SLASH = True
+
+STATIC_URL = 'static/'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'

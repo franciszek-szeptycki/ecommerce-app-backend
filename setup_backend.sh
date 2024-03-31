@@ -1,12 +1,16 @@
 #!/bin/bash
 
-cd backend
+if [ -d "./frontend" ]; then
+    cd backend
+fi
 
 if [ ! -d "./venv" ]; then
     python3 -m venv venv
 fi
 
 source venv/bin/activate
+
+pwd
 
 pip install -r requirements.txt
 

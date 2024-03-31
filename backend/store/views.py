@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import *
 
 
 class ProductListAPIView(generics.ListAPIView):
@@ -11,3 +11,11 @@ class ProductListAPIView(generics.ListAPIView):
 class ProductDetailAPIView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class WebsiteConfigDetailAPIView(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = WebsiteConfigSerializer
+
+    def get_queryset(self):
+        return WebsiteConfig.objects.all()[:1]

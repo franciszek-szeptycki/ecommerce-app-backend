@@ -72,7 +72,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [1]
+            "gallery": [1]
         }
     },
     {
@@ -85,7 +85,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [2]
+            "gallery": [2, 7]
         }
     },
     {
@@ -98,7 +98,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [3]
+            "gallery": [3]
         }
     },
     {
@@ -111,7 +111,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [4]
+            "gallery": [4, 5, 1, 6]
         }
     },
     {
@@ -124,7 +124,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [5]
+            "gallery": [5, 2, 4, 1]
         }
     },
     {
@@ -137,7 +137,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [6]
+            "gallery": [6, 2]
         }
     },
     {
@@ -150,7 +150,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [7]
+            "gallery": [7]
         }
     },
     {
@@ -163,7 +163,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [1]
+            "gallery": [1, 7, 4, 3, 2]
         }
     },
     {
@@ -176,7 +176,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [2]
+            "gallery": [2]
         }
     },
     {
@@ -189,7 +189,7 @@
             "image": "placeholder.jpg",
             "created_at": "2024-03-30T00:00:00Z",
             "updated_at": "2024-03-30T00:00:00Z",
-            "galery": [3]
+            "gallery": [3, 1]
         }
     }
 ]
