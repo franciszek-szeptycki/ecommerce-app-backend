@@ -9,6 +9,9 @@ class ProductGallery(models.Model):
 
     def __str__(self):
         return self.image.url
+    
+    class Meta:
+         verbose_name_plural = 'Product Galleries'
 
 
 class Product(models.Model):
