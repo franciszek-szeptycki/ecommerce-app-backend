@@ -1,0 +1,22 @@
+name: Send Backend to Server
+
+on:
+  push:
+    branches:
+      - cicd-test
+
+jobs:
+  deploy_backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Copy backend to server
+      run: scp -P 10999 -r backend/* root@srv08.mikr.us:/app/backend
