@@ -29,7 +29,6 @@ jobs:
       uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --delete --exclude '.git/*' --exclude 'node_modules/*'
-        working-directory: frontend
         source_dir: dist
         dest_dir: s3://{bucket}/dist
       env:
