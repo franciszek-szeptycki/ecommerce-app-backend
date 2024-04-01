@@ -1,0 +1,40 @@
+name: Build and Deploy Frontend
+
+on:
+  push:
+    branches:
+      - cicd-test
+
+jobs:
+  build:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Change directory to frontend
+      run: cd frontend
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Copy dist to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --delete --exclude '.git/*' --exclude 'node_modules/*'
+        source_dir: frontend/dist
+        dest_dir: s3://{bucket}/dist
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
