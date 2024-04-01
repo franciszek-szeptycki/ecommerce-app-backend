@@ -93,7 +93,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS.insert(0, 'jazzmin')
 
 JAZZMIN_UI_TWEAKS = {
-    # 'theme': 'sketchy',
+    'theme': 'sketchy',
 }
 
 APPEND_SLASH = True
@@ -110,13 +110,20 @@ else:
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
     AWS_DEFAULT_ACL = 'public-read'
+
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_LOCATION = "static"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/"
+
+    MEDIAFILES_LOCATION = "media"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
+
+    STORAGES = {
+        "default": {"BACKEND": "backend.custom_storage.MediaStorage"},
+        "staticfiles": {"BACKEND": "backend.custom_storage.StaticStorage"},
+    }
 
 MIDDLEWARE += [
     'corsheaders.middleware.CorsMiddleware',
