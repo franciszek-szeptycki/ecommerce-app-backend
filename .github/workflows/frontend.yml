@@ -24,12 +24,13 @@ jobs:
       run: |
         npm install
         npm run build
-        
+
     - name: Copy dist to S3
       uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --delete --exclude '.git/*' --exclude 'node_modules/*'
-        source_dir: frontend/dist
+        working-directory: frontend
+        source_dir: dist
         dest_dir: s3://{bucket}/dist
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
