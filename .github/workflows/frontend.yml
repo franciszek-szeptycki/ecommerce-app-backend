@@ -19,15 +19,12 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Change directory to frontend
-      run: cd frontend
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build
-      run: npm run build
-
+    - name: Install dependencies and build
+      working-directory: frontend
+      run: |
+        npm install
+        npm run build
+        
     - name: Copy dist to S3
       uses: jakejarvis/s3-sync-action@master
       with:
