@@ -1,4 +1,4 @@
-name: Deploy Backend to Server
+name: Send Backend Content to Server
 
 on:
   push:
@@ -7,15 +7,20 @@ on:
 
 jobs:
   deploy:
+    name: Deploy Backend
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
-    - name: Deploy Backend
-      run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem
-        chmod 600 ssh_key.pem
-        scp -i ssh_key.pem -P ${{ secrets.PORT }} backend/* ${{ secrets.USER }}@${{ secrets.HOST }}:/app/backend
-      shell: bash
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Install rsync
+      run: sudo apt-get install rsync -y
+
+    - name: Sync Backend to Server
+      run: rsync -avz -e "ssh -p ${{ secrets.PORT }}" backend/ ${{ secrets.USER }}@${{ secrets.HOST }}:/path/to/destination/backend/
