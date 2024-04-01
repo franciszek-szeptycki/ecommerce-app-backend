@@ -16,7 +16,7 @@ jobs:
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:
-        private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Copy backend to server
       run: scp -P 10999 -r backend/* root@srv08.mikr.us:/app/backend
