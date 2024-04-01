@@ -8,18 +8,14 @@ on:
 jobs:
   deploy_backend:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
+    - uses: actions/checkout@v4
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.7
       with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        port: ${{ secrets.PORT }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        name: id_rsa
-        if_key_exists: fail
-        known_hosts: ""
-
-    - name: Copy backend to server
-      run: scp -P 10999 -r backend/* root@srv08.mikr.us:/app/backend
+        source: "backend/"
+        target: app/backend
