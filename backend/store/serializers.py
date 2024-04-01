@@ -9,6 +9,12 @@ class ProductGallerySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'price', 'description', 'image', 'created_at', 'updated_at']
+
+
+class ProductDetailSerializer(serializers.ModelSerializer):
     gallery = ProductGallerySerializer(many=True, read_only=True)
 
     class Meta:
