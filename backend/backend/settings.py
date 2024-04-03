@@ -2,7 +2,10 @@ from pathlib import Path
 import os
 import dotenv
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv.load_dotenv(BASE_DIR / '.env')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -80,16 +83,12 @@ INSTALLED_APPS += [
 ]
 
 
-if os.getenv('DB_NAME'):
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    import dj_database_url
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT'),
-        }
+        'default': dj_database_url.config(default=DATABASE_URL)
     }
 else:
     DATABASES = {
@@ -99,7 +98,8 @@ else:
         }
     }
 
-SECRET_KEY = 'django-insecure-b^%_b6zm_eo8+34mnt%!o8zjvg!ymon*q5^4*-v_k3e&g*@vq'
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = []
 
@@ -110,8 +110,6 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 APPEND_SLASH = True
-
-dotenv.load_dotenv(BASE_DIR / '.env')
 
 if not os.getenv('USE_S3'):
     STATIC_URL = 'static/'
