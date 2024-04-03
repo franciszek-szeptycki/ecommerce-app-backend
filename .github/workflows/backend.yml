@@ -34,4 +34,4 @@ jobs:
 
     - name: Run deploy.sh
       run: |
-        ssh -o StrictHostKeyChecking=no -p 10131 -i ./ssh-private-key root@srv26.mikr.us 'bash -s' < ./ecommerce/backend/deploy.sh
+        ssh -o StrictHostKeyChecking=no -p 10131 -i ./ssh-private-key root@srv26.mikr.us 'bash -s' < chmod +x ~/ecommerce/backend/deploy.sh && ~/ecommerce/backend/deploy.sh
