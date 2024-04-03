@@ -5,7 +5,7 @@ from .models import *
 class ProductGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductGallery
-        fields = ['image', 'created_at', 'updated_at']
+        fields = ['image']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -23,6 +23,8 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 class WebsiteConfigSerializer(serializers.ModelSerializer):
+    slider_images = ProductGallerySerializer(many=True, read_only=True)
+
     class Meta:
         model = WebsiteConfig
         fields = '__all__'
