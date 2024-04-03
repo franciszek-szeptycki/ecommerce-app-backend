@@ -13,11 +13,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Add .env file
-      run: |
-        echo "${{ secrets.ENV_BACKEND }}" > ./backend/.env
-      shell: bash
-
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
@@ -37,6 +32,6 @@ jobs:
         scp -o StrictHostKeyChecking=no -r -P 10131 -i ./ssh-private-key ./backend/* root@srv26.mikr.us:ecommerce/backend
       shell: bash
 
-    # - name: Deploy backend via SSH
-    #   run: |
-    #     ssh -o StrictHostKeyChecking=no -p 10131 -i ./ssh-private-key root@srv26.mikr.us 'bash -s' < ~/ecommerce/backend/deploy.sh
+    - name: Run deploy.sh
+      run: |
+        ssh -o StrictHostKeyChecking=no -p 10131 -i ./ssh-private-key root@srv26.mikr.us 'bash -s' < ./ecommerce/backend/deploy.sh
