@@ -13,8 +13,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
     - name: Create SSH private key file
-      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ./ssh-private-key
+      run: echo "$SSH_PRIVATE_KEY" > ./ssh-private-key
       shell: bash
 
     - name: Deploy backend via SCP
