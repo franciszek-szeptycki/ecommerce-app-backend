@@ -19,5 +19,5 @@ jobs:
 
     - name: Deploy backend via SCP
       run: |
-        scp -r -P 10131 -i ./ssh-private-key ./backend/* root@srv26.mikr.us:app/backend
+        scp -o StrictHostKeyChecking=no -r -P 10131 -i ./ssh-private-key ./backend/* root@srv26.mikr.us:app/backend
       shell: bash
