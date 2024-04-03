@@ -13,7 +13,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-
     - name: Add .env file
       run: |
         echo "${{ secrets.ENV_BACKEND }}" > ./backend/.env
@@ -24,13 +23,18 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+    - name: Add .env file
+      run: |
+        echo "${{ secrets.ENV_BACKEND }}" > ./backend/.env
+      shell: bash
+
     - name: Create SSH private key file
       run: echo "$SSH_PRIVATE_KEY" > ./ssh-private-key
       shell: bash
 
     - name: Deploy backend via SCP
       run: |
-        rsync -e "ssh -o StrictHostKeyChecking=no -p 10131 -i ./ssh-private-key" -av --delete ./backend/ root@srv26.mikr.us:app/backend
+        scp -o StrictHostKeyChecking=no -r -P 10131 -i ./ssh-private-key ./backend/* root@srv26.mikr.us:ecommerce/backend
       shell: bash
 
     # - name: Deploy backend via SSH
