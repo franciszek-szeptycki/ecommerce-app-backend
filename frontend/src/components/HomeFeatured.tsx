@@ -3,7 +3,7 @@
 function HomeFeatured() {
   return (
     <div className="container">
-        <h1 className="text-center my-5">Online Store</h1>
+        <h1 className="text-center my-5">Featured Products</h1>
         <div className="row">
           <div className="col-md-4">
             <div className="card">

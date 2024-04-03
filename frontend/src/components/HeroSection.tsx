@@ -8,7 +8,7 @@ const HeroSection = () => {
   ], []);
   const [currentImage, setCurrentImage] = useState(images[0]);
 
-  const intervalId = useRef<number | null>(null);
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
 
   const startInterval = () => {
     if (intervalId.current) {
