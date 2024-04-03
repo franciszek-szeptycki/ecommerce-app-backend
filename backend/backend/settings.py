@@ -100,8 +100,8 @@ else:
 
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DEBUG', 'True').lower() != 'false'
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS.insert(0, 'jazzmin')
 
