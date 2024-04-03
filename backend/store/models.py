@@ -11,7 +11,7 @@ class ProductGallery(models.Model):
         return self.image.url
 
     class Meta:
-        verbose_name_plural = 'Product Galleries'
+        verbose_name_plural = 'Product gallery'
 
 
 class Product(models.Model):
@@ -33,6 +33,8 @@ class WebsiteConfig(models.Model):
     hero_title = models.CharField(max_length=255)
     hero_subtitle = models.CharField(max_length=255)
     hero_image = models.ImageField(upload_to='hero/', default=DEFAULT_IMG_PATH)
+
+    slider_images = models.ManyToManyField('ProductGallery', related_name='sliders')
 
     def __str__(self):
         return "Website configuration"

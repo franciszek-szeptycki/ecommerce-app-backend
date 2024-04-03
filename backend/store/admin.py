@@ -7,13 +7,16 @@ from django.http import HttpResponseRedirect
 admin.site.unregister(User)
 admin.site.unregister(Group)
 
-admin.site.register(Product)
+admin.site.register([Product, ProductGallery])
 
 
 class WebsiteConfigAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Hero', {
             'fields': ('hero_title', 'hero_subtitle', 'hero_image',),
+        }),
+        ('Slider', {
+            'fields': ('slider_images',),
         }),
     )
 
