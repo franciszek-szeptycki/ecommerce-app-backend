@@ -8,7 +8,7 @@ const HeroSection = () => {
   ], []);
   const [currentImage, setCurrentImage] = useState(images[0]);
 
-  const intervalId = useRef<NodeJS.Timeout | null>(null);
+  const intervalId = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startInterval = () => {
     if (intervalId.current) {
@@ -29,7 +29,6 @@ const HeroSection = () => {
         clearInterval(intervalId.current);
       }
     };
-  // es-lint-disable-next-line
   }, [images]);
 
   const handleCarouselClick = (direction: 'left' | 'right'): React.MouseEventHandler<HTMLButtonElement> => (event) => {
