@@ -1,28 +1,42 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 
 const HeroSection = () => {
-  const images: string[] = useMemo(() => [
-    "https://via.placeholder.com/720x480", 
-    "https://via.placeholder.com/1080x720", 
-    "https://via.placeholder.com/1920x1080"
-  ], []);
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [images, setImages] = useState<string[]>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const intervalId = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const startInterval = () => {
-    if (intervalId.current) {
-      clearInterval(intervalId.current);
+  const fetchImages = async () => {
+    try {
+      const response = await axios.get('http://52.23.229.23/api/config');
+      if (response.data && response.data.length > 0) {
+        const sliderImages = response.data[0].slider_images.map((imageObj: { image: string }) => imageObj.image);
+        setImages(sliderImages);
+      }
+    } catch (error) {
+      console.error('Error fetching images:', error);
     }
-    intervalId.current = setInterval(() => {
-      setCurrentImage(oldImage => {
-        const currentIndex = images.indexOf(oldImage);
-        return images[(currentIndex + 1) % images.length];
-      });
-    }, 5000);
   };
 
   useEffect(() => {
+    fetchImages();
+    return () => {
+      if (intervalId.current) {
+        clearInterval(intervalId.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const startInterval = () => {
+      if (intervalId.current) {
+        clearInterval(intervalId.current);
+      }
+      intervalId.current = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 5000);
+    };
     startInterval();
     return () => {
       if (intervalId.current) {
@@ -31,23 +45,20 @@ const HeroSection = () => {
     };
   }, [images]);
 
-  const handleCarouselClick = (direction: 'left' | 'right'): React.MouseEventHandler<HTMLButtonElement> => (event) => {
-    event.preventDefault();
-    setCurrentImage(oldImage => {
-      const currentIndex = images.indexOf(oldImage);
+  const handleCarouselClick = (direction: 'left' | 'right') => () => {
+    setCurrentImageIndex((prevIndex) => {
       let newIndex: number;
       if (direction === 'left') {
-        newIndex = (currentIndex - 1 + images.length) % images.length;
+        newIndex = (prevIndex - 1 + images.length) % images.length;
       } else {
-        newIndex = (currentIndex + 1) % images.length;
+        newIndex = (prevIndex + 1) % images.length;
       }
-      return images[newIndex];
+      return newIndex;
     });
-    startInterval(); // Reset the interval
   };
 
   return (
-    <div className="jumbotron fade-in" style={{ backgroundImage: `url(${currentImage})`, backgroundSize: 'cover', height: '500px' }}>
+    <div className="jumbotron fade-in" style={{ backgroundImage: `url(${images[currentImageIndex]})`, backgroundSize: 'cover', height: '500px' }}>
       <button className='hs-carousel' style={{ left: '2%' }} onClick={handleCarouselClick('left')}>
         {'<'}
       </button>
