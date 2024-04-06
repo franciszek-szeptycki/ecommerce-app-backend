@@ -4,9 +4,9 @@ from .models import *
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
+
 admin.site.unregister(User)
 admin.site.unregister(Group)
-
 admin.site.register([Product, ProductGallery])
 
 
@@ -19,7 +19,7 @@ class WebsiteConfigAdmin(admin.ModelAdmin):
             'fields': ('slider_images',),
         }),
         ('About page', {
-            'fields': ('about_text',),    
+            'fields': ('about_text',),
         }),
     )
 
