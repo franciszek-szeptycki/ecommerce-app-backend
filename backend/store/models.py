@@ -36,6 +36,8 @@ class WebsiteConfig(models.Model):
 
     slider_images = models.ManyToManyField('ProductGallery', related_name='sliders')
 
+    about_text = models.TextField(blank=True, null=True)
+
     def __str__(self):
         return "Website configuration"
 

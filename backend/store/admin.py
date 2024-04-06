@@ -18,6 +18,9 @@ class WebsiteConfigAdmin(admin.ModelAdmin):
         ('Slider', {
             'fields': ('slider_images',),
         }),
+        ('About page', {
+            'fields': ('about_text',),    
+        }),
     )
 
     def _remove_actions(self, extra_context):
