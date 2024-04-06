@@ -5,13 +5,13 @@ from .models import *
 class ProductGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductGallery
-        fields = ['image']
+        fields = ['img']
 
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'description', 'image', 'created_at', 'updated_at']
+        fields = ['id', 'name', 'price', 'description', 'img', 'created_at', 'updated_at']
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
@@ -19,11 +19,11 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'description', 'image', 'created_at', 'updated_at', 'gallery']
+        fields = ['id', 'name', 'price', 'description', 'img', 'created_at', 'updated_at', 'gallery']
 
 
 class WebsiteConfigSerializer(serializers.ModelSerializer):
-    slider_images = ProductGallerySerializer(many=True, read_only=True)
+    slider_imgs = ProductGallerySerializer(many=True, read_only=True)
 
     class Meta:
         model = WebsiteConfig

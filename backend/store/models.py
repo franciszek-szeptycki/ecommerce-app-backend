@@ -3,7 +3,7 @@ from .utils import DEFAULT_IMG_PATH
 
 
 class ProductGallery(models.Model):
-    image = models.ImageField(upload_to='products/', default=DEFAULT_IMG_PATH)
+    img = models.ImageField(upload_to='products/', default=DEFAULT_IMG_PATH)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -19,7 +19,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
 
-    image = models.ImageField(upload_to='products/', default=DEFAULT_IMG_PATH)
+    img = models.ImageField(upload_to='products/', default=DEFAULT_IMG_PATH)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
