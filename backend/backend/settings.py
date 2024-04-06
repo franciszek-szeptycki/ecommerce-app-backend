@@ -77,7 +77,6 @@ INSTALLED_APPS += [
     'store',
     'rest_framework',
     'drf_yasg',
-    'docs',
     'storages',
     'corsheaders',
 ]
