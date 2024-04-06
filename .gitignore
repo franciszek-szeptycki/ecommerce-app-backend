@@ -7,6 +7,6 @@ db.sqlite3
 docker-compose.yml
 .terraform
 .terraform.tfstate
-.terraform.tfstate.backup
+.terraform.tfstate.*
 .terraform.lock.hcl
 *.tfvars

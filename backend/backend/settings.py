@@ -105,9 +105,9 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS.insert(0, 'jazzmin')
 
-JAZZMIN_UI_TWEAKS = {
-    'theme': 'sketchy',
-}
+# JAZZMIN_UI_TWEAKS = {
+#     'theme': 'sketchy',
+# }
 
 APPEND_SLASH = True
 
