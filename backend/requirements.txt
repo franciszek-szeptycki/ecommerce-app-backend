@@ -25,3 +25,7 @@ sqlparse==0.4.4
 typing_extensions==4.10.0
 uritemplate==4.1.1
 urllib3==2.2.1
+
+pip~=22.0.2
+setuptools~=59.6.0
+stripe~=9.1.0

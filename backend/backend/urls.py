@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('store.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('payments/', include('payments.urls')),
 ]
 
 if settings.DEBUG:

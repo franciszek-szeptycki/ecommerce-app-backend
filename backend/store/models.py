@@ -1,5 +1,5 @@
 from django.db import models
-from .utils import DEFAULT_IMG_PATH
+from utils.image import *
 
 
 class ProductGallery(models.Model):
@@ -24,6 +24,8 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     gallery = models.ManyToManyField('ProductGallery', related_name='products')
+
+    file = models.FileField(upload_to='files/', default=DEFAULT_FILE_PATH)
 
     def __str__(self):
         return self.name

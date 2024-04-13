@@ -79,6 +79,7 @@ INSTALLED_APPS += [
     'drf_yasg',
     'storages',
     'corsheaders',
+    'payments',
 ]
 
 
@@ -104,9 +105,9 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS.insert(0, 'jazzmin')
 
-# JAZZMIN_UI_TWEAKS = {
-#     'theme': 'sketchy',
-# }
+JAZZMIN_UI_TWEAKS = {
+    'theme': 'sketchy',
+}
 
 APPEND_SLASH = True
 
@@ -146,3 +147,4 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
 ]
 
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')

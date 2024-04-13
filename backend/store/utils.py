@@ -1,1 +1,0 @@
-DEFAULT_IMG_PATH = "placeholder.png"
