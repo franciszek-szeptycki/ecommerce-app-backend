@@ -31,7 +31,8 @@ def create_payment(request):
             },
         )
         return jsonify({
-            'clientSecret': intent['client_secret']
+            'clientSecret': intent['client_secret'],
+            'intent': intent
         })
     except Exception as e:
         return jsonify({'error': str(e)})
