@@ -28,10 +28,11 @@ def create_payment(request):
                 'enabled': True,
             },
         )
-        return Response({
-            'clientSecret': intent['client_secret'],
-            'intent': intent
-        })
+        # return Response({
+        #     'clientSecret': intent['client_secret'],
+        #     'intent': intent
+        # })
+        return Response(intent)
     except Exception as e:
         return Response({'error': str(e)})
 
